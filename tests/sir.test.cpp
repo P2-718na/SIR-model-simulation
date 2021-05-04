@@ -6,3 +6,7 @@
 TEST_CASE("SIR test") {
   CHECK(true);
 }
+
+// todo test that s + i  + r = constant
+// todo test, gamma inverse mean time of infection resolution
+// todo test s, i, r always positive
