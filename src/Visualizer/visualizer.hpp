@@ -5,20 +5,11 @@ namespace sir {
 
 class Model;
 
-// Class for handling generation of data used by TUIVisualizer and
-// GUIVisualizer
+// Class for visualizing data on the terminal.
 class Visualizer {
- protected:
   // Handler to the model used in this visualizer
   Model& model_;
 
- public:
-  explicit Visualizer(Model& model);
-};
-
-// Class for visualizing data on the terminal.
-// Data will be printed as a table
-class TUIVisualizer : Visualizer {
   // Compute padding required to display numbers correctly up to
   // biggestNumber
   static int computePadding(int biggestNumber); // Todo this will need a test
@@ -30,7 +21,7 @@ class TUIVisualizer : Visualizer {
   static std::string alignRight(int rightNum, int width);
 
  public:
-  explicit TUIVisualizer(Model& model);
+  explicit Visualizer(Model& model);
 
   // Display data on a table. Returns false if
   // dayCount is <= 0.
@@ -39,10 +30,6 @@ class TUIVisualizer : Visualizer {
   // Display bare data. (T, S, I, R format). T indicates day
   // number.
   void display(int dayCount) const noexcept;
-};
-
-class GUIVisualizer : Visualizer {
-
 };
 
 }
