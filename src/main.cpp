@@ -2,11 +2,16 @@
 
 #include "model.hpp"
 #include "visualizer.hpp"
+#include "parser.hpp"
 
 int main(int argc, char* argv[]) {
-  sir::Model model{0.2, 0.1, 1000, 1, 0};
+  // Parse CLI Arguments
+  // Todo show help if no arguments
+  sir::Parser parser(argc, argv);
+
+  sir::Model model{parser.b(), parser.c(), parser.s(), parser.i(), parser.r()};
 
   sir::TUIVisualizer visualizer{model};
 
-  visualizer.display(160);
+  visualizer.display(parser.dayCount());
 }
