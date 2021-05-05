@@ -11,6 +11,7 @@ INCLUDE_DIRECTORIES(
         sir-sym PUBLIC
         "${PROJECT_SOURCE_DIR}/src"
         "${PROJECT_SOURCE_DIR}/src/Model"
+        "${PROJECT_SOURCE_DIR}/src/Visualizer"
 )
 
 ADD_SUBDIRECTORY(src)
