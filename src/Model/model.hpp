@@ -66,6 +66,9 @@ class Model {
   // Getter function for removed count.
   int removed() const noexcept;
 
+  // Getter function for total population count.
+  int total() const noexcept;
+
   // Getter function for whole state (s, i, r).
   State state() const noexcept;
 

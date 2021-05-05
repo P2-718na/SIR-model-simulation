@@ -78,6 +78,10 @@ int Model::removed() const noexcept {
   return static_cast<int>(r_);
 }
 
+int Model::total() const noexcept {
+  return n_;
+};
+
 State Model::state() const noexcept {
   return {
     this->susceptible(),
