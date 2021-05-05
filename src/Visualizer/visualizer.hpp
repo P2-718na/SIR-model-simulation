@@ -34,7 +34,11 @@ class TUIVisualizer : Visualizer {
 
   // Display data on a table. Returns false if
   // dayCount is <= 0.
-  bool display(int dayCount) const noexcept;
+  void displayPretty(int dayCount) const noexcept;
+
+  // Display bare data. (T, S, I, R format). T indicates day
+  // number.
+  void display(int dayCount) const noexcept;
 };
 
 class GUIVisualizer : Visualizer {

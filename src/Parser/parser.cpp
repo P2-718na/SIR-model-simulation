@@ -29,7 +29,10 @@ namespace sir {
           ("Number of removed people. Defaults to 0.")
        | lyra::opt(dayCount_, "dayCount")
        ["-t"]["--day-count"]
-          ("Duration of the simulation.").required();
+          ("Duration of the simulation.").required()
+      | lyra::opt(prettyPrint_)
+      ["--pretty"]
+         ("Prints a pretty table to the terminal.");
 
     auto result = cli_.parse({argc, argv});
 
@@ -42,6 +45,8 @@ namespace sir {
       exit(1);
     }
 
+    // Display help if no arguments were specified or if
+    // the user asked for it.
     if (showHelp || argc == 1) {
       std::cout << cli_;
 
@@ -71,6 +76,10 @@ namespace sir {
 
   int Parser::dayCount() const noexcept {
     return dayCount_;
+  }
+
+  int Parser::prettyPrint() const noexcept {
+    return prettyPrint_;
   }
 
 }

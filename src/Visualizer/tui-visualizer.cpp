@@ -38,10 +38,10 @@ std::string TUIVisualizer::alignRight(int rightNum, int width) {
   return spaces + std::to_string(rightNum);
 }
 
-bool TUIVisualizer::display(int dayCount) const noexcept {
+void TUIVisualizer::displayPretty(int dayCount) const noexcept {
   // We need at least one day to print some data.
   if (dayCount <= 0) {
-    return false;
+    return;
   }
 
   // Compute padding required to display data. Added +1 for readability.
@@ -73,6 +73,7 @@ bool TUIVisualizer::display(int dayCount) const noexcept {
     std::cout << "├" << row << "┼" << row << "┼" << row << "┼" << row << "┤"
               << endl;
 
+    // Todo print inital state?
     // Simulate one day
     model_.step();
 
@@ -86,8 +87,23 @@ bool TUIVisualizer::display(int dayCount) const noexcept {
   // Print last line of table
   std::cout << "└" << row << "┴" << row << "┴" << row << "┴" << row << "┘"
             << endl;
+}
 
-  return true;
+void TUIVisualizer::display(int dayCount) const noexcept {
+  if (dayCount <= 0) {
+    return;
+  }
+
+  for (int day = 0; day != dayCount; ++day) {
+    // Simulate one day
+    model_.step();
+
+    // Print state values
+    std::cout << day << " " << model_.susceptible()
+              << " " << model_.infected()
+              << " " << model_.removed()
+              << endl;
+  }
 }
 
 }  // namespace sir

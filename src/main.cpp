@@ -13,5 +13,10 @@ int main(int argc, char* argv[]) {
 
   sir::TUIVisualizer visualizer{model};
 
-  visualizer.display(parser.dayCount());
+  if (parser.prettyPrint()) {
+     visualizer.displayPretty(parser.dayCount());
+  } else {
+    visualizer.display(parser.dayCount());
+  }
 }
+
