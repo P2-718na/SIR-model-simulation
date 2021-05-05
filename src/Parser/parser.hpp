@@ -1,5 +1,7 @@
 #pragma once
 
+#include "lyra/lyra.hpp"
+
 namespace sir {
 
   struct ModelConfig {
@@ -11,6 +13,8 @@ namespace sir {
   };
 
 class Parser {
+  lyra::cli cli_;
+
   double beta_;
   double gamma_;
   int susceptible_;
@@ -21,12 +25,12 @@ class Parser {
 public:
   Parser(int argc, char *argv[]);
 
-  [[nodiscard]] double b() const;
-  [[nodiscard]] double c() const;
-  [[nodiscard]] int s() const;
-  [[nodiscard]] int i() const;
-  [[nodiscard]] int r() const;
-  [[nodiscard]] int dayCount() const;
+  double b() const noexcept;
+  double c() const noexcept;
+  int s() const noexcept;
+  int i() const noexcept;
+  int r() const noexcept;
+  int dayCount() const noexcept;
 };
 
 }  // namespace sir
