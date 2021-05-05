@@ -58,7 +58,7 @@ void TUIVisualizer::displayPretty(int dayCount) const noexcept {
 
   std::string row(padding, '-');
 
-  // Print first line of table header
+  // Print first line of table header.
   std::cout << "┌" << row << "┬" << row << "┬" << row << "┬" << row << "┐"
             << endl;
 
@@ -67,42 +67,47 @@ void TUIVisualizer::displayPretty(int dayCount) const noexcept {
             << this->center('S', padding) << "│" << this->center('I', padding)
             << "│" << this->center('R', padding) << "│" << endl;
 
-  // Print table body
-  for (int day = 0; day != dayCount; ++day) {
-    // Print table line
+  // Print table body.
+  // Note that the number of values printed is dayCount + 1, since the
+  // initial state is printed as well.
+  for (int day = 0; day != dayCount + 1; ++day) {
+    // Print table line.
     std::cout << "├" << row << "┼" << row << "┼" << row << "┼" << row << "┤"
               << endl;
 
-    // Todo print inital state?
-    // Simulate one day
-    model_.step();
-
-    // Print state values
+    // Print state values.
     std::cout << "│" << this->alignRight(day + 1, padding) << "|"
               << this->alignRight(model_.susceptible(), padding) << "│"
               << this->alignRight(model_.infected(), padding) << "│"
               << this->alignRight(model_.removed(), padding) << "│" << endl;
+
+    // Simulate one day.
+    model_.step();
   }
 
-  // Print last line of table
+  // Print last line of table.
   std::cout << "└" << row << "┴" << row << "┴" << row << "┴" << row << "┘"
             << endl;
 }
+
 
 void TUIVisualizer::display(int dayCount) const noexcept {
   if (dayCount <= 0) {
     return;
   }
 
-  for (int day = 0; day != dayCount; ++day) {
-    // Simulate one day
-    model_.step();
-
-    // Print state values
+  // Print data.
+  // Note that the number of values printed is dayCount + 1, since the
+  // initial state is printed as well.
+  for (int day = 0; day != dayCount + 1; ++day) {
+    // Print state values.
     std::cout << day << " " << model_.susceptible()
               << " " << model_.infected()
               << " " << model_.removed()
               << endl;
+
+    // Simulate one day.
+    model_.step();
   }
 }
 
