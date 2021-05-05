@@ -9,6 +9,7 @@ namespace sir {
   Parser::Parser(int argc, char **argv) {
     bool showHelp = false;
 
+    // todo add checks
     cli_ |=
        lyra::help(showHelp)
        | lyra::opt(beta_, "beta")
@@ -36,13 +37,12 @@ namespace sir {
       std::cerr
         << "Error in command line: "
         << result.errorMessage()
-        << std::endl
-        << cli_;
+        << std::endl;
 
       exit(1);
     }
 
-    if (showHelp) {
+    if (showHelp || argc == 1) {
       std::cout << cli_;
 
       exit(1);
