@@ -1,6 +1,15 @@
 #pragma once
 
 namespace sir {
+
+// Struct containing a single state (number of susceptible, infected
+// and removed people).
+struct State {
+  int s;
+  int i;
+  int r;
+};
+
 class Model {
   // Beta parameter for the simulation. Represents infection probability.
   // Must be a value in range [0, 1].
@@ -16,15 +25,15 @@ class Model {
 
   // Represents people who might get infected.
   // Fixed at the beginning of the simulation.
-  int s_;
+  double s_;
 
   // Represents people who are infected and can infect others.
   // Fixed at the beginning of the simulation.
-  int i_;
+  double i_;
 
   // Represents dead, healed or quarantined people.
   // Fixed at the beginning of the simulation.
-  int r_;
+  double r_;
 
   // Total count (s_ + i_ + r_)
   // Computed at the beginning of the simulation.
@@ -48,17 +57,20 @@ class Model {
   // and leaves gamma unchanged.
   bool gamma(double newGamma) noexcept;
 
-  // Getter function for susceptible count
-  const int& susceptible() const noexcept;
+  // Getter function for susceptible count.
+  int susceptible() const noexcept;
 
-  // Getter function for infected count
-  const int& infected() const noexcept;
+  // Getter function for infected count.
+  int infected() const noexcept;
 
-  // Getter function for removed count
-  const int& removed() const noexcept;
+  // Getter function for removed count.
+  int removed() const noexcept;
+
+  // Getter function for whole state (s, i, r).
+  State state() const noexcept;
 
   // Methods ///////////////////////////////////////////////////////////////////
-  // Simulate one day
+  // Simulate one day.
   void step() noexcept;
 };
 }

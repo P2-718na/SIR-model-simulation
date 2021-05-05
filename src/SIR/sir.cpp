@@ -66,16 +66,24 @@ bool Model::gamma(double newGamma) noexcept {
   return true;
 }
 
-const int &Model::susceptible() const noexcept {
-  return s_;
+int Model::susceptible() const noexcept {
+  return static_cast<int>(s_);
 }
 
-const int &Model::infected() const noexcept {
-  return i_;
+int Model::infected() const noexcept {
+  return static_cast<int>(i_);
 }
 
-const int &Model::removed() const noexcept {
-  return r_;
+int Model::removed() const noexcept {
+  return static_cast<int>(r_);
+}
+
+State Model::state() const noexcept {
+  return {
+    this->susceptible(),
+    this->removed(),
+    this->infected()
+  };
 }
 
 // Methods /////////////////////////////////////////////////////////////////////
@@ -88,10 +96,10 @@ void Model::step() noexcept {
 
   // Update values
   // s_ -= bsni; Don't update S just yet...
-  i_ += static_cast<int>(std::round(bsni - ci));
-  r_ += static_cast<int>(std::round(ci));
+  i_ += bsni - ci;
+  r_ += ci;
 
-  // Since s + i + r is constant, update S based on that. This accounts
+  // Since s + i + r is constant, update S based on that. This also accounts
   // for floating point and rounding errors.
   s_ = n_ - i_ - r_;
 
