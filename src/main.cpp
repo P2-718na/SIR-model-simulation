@@ -11,7 +11,12 @@ int main(int argc, char* argv[]) {
 
   sir::Model model{parser.b(), parser.c(), parser.s(), parser.i(), parser.r()};
 
-  sir::TUIVisualizer visualizer{model};
+  sir::Visualizer visualizer{model};
 
-  visualizer.display(parser.dayCount());
+  if (parser.prettyPrint()) {
+     visualizer.displayPretty(parser.dayCount());
+  } else {
+    visualizer.display(parser.dayCount());
+  }
 }
+

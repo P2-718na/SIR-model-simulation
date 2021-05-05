@@ -9,6 +9,7 @@ namespace sir {
   Parser::Parser(int argc, char **argv) {
     bool showHelp = false;
 
+    // todo add checks
     cli_ |=
        lyra::help(showHelp)
        | lyra::opt(beta_, "beta")
@@ -28,7 +29,10 @@ namespace sir {
           ("Number of removed people. Defaults to 0.")
        | lyra::opt(dayCount_, "dayCount")
        ["-t"]["--day-count"]
-          ("Duration of the simulation.").required();
+          ("Duration of the simulation.").required()
+      | lyra::opt(prettyPrint_)
+      ["--pretty"]
+         ("Prints a pretty table to the terminal.");
 
     auto result = cli_.parse({argc, argv});
 
@@ -36,13 +40,14 @@ namespace sir {
       std::cerr
         << "Error in command line: "
         << result.errorMessage()
-        << std::endl
-        << cli_;
+        << std::endl;
 
       exit(1);
     }
 
-    if (showHelp) {
+    // Display help if no arguments were specified or if
+    // the user asked for it.
+    if (showHelp || argc == 1) {
       std::cout << cli_;
 
       exit(1);
@@ -71,6 +76,10 @@ namespace sir {
 
   int Parser::dayCount() const noexcept {
     return dayCount_;
+  }
+
+  int Parser::prettyPrint() const noexcept {
+    return prettyPrint_;
   }
 
 }
