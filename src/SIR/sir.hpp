@@ -1,5 +1,6 @@
 #pragma once
 
+namespace sir {
 class Model {
   // Beta parameter for the simulation. Represents infection probability.
   // Must be a value in range [0, 1].
@@ -29,8 +30,8 @@ class Model {
   // Computed at the beginning of the simulation.
   int n_;
 
-public:
-  // Constructor ///////////////////////////////////////////////////////////////
+ public:
+  // Constructors //////////////////////////////////////////////////////////////
   Model(double beta, double gamma, int susceptible, int infected, int removed);
 
   // Accessors /////////////////////////////////////////////////////////////////
@@ -55,4 +56,9 @@ public:
 
   // Getter function for removed count
   const int& removed() const noexcept;
+
+  // Methods ///////////////////////////////////////////////////////////////////
+  // Simulate one day
+  void step() noexcept;
 };
+}
