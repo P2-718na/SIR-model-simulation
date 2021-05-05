@@ -10,10 +10,10 @@ class Model;
 class Visualizer {
  protected:
   // Handler to the model used in this visualizer
-  Model* model_;
+  Model& model_;
 
  public:
-  explicit Visualizer(Model* model);
+  explicit Visualizer(Model& model);
 };
 
 // Class for visualizing data on the terminal.
@@ -30,7 +30,7 @@ class TUIVisualizer : Visualizer {
   static std::string alignRight(int rightNum, int width);
 
  public:
-  explicit TUIVisualizer(Model* model);
+  explicit TUIVisualizer(Model& model);
 
   // Display data on a table. Returns false if
   // dayCount is <= 0.

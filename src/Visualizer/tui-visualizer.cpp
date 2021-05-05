@@ -9,7 +9,7 @@ using std::endl;
 
 namespace sir {
 
-TUIVisualizer::TUIVisualizer(Model* model) : Visualizer(model) {}
+TUIVisualizer::TUIVisualizer(Model& model) : Visualizer(model) {}
 
 int TUIVisualizer::computePadding(int biggestNumber) {
   int padding = 0;
@@ -47,7 +47,7 @@ bool TUIVisualizer::display(int dayCount) const noexcept {
   // Compute padding required to display data. Added +1 for readability.
   const int padding
     = this->computePadding(
-      dayCount > model_->total() ? dayCount : model_->total())
+      dayCount > model_.total() ? dayCount : model_.total())
     + 1;
 
   // Box characters used
@@ -74,13 +74,13 @@ bool TUIVisualizer::display(int dayCount) const noexcept {
               << endl;
 
     // Simulate one day
-    model_->step();
+    model_.step();
 
     // Print state values
     std::cout << "│" << this->alignRight(day + 1, padding) << "|"
-              << this->alignRight(model_->susceptible(), padding) << "│"
-              << this->alignRight(model_->infected(), padding) << "│"
-              << this->alignRight(model_->removed(), padding) << "│" << endl;
+              << this->alignRight(model_.susceptible(), padding) << "│"
+              << this->alignRight(model_.infected(), padding) << "│"
+              << this->alignRight(model_.removed(), padding) << "│" << endl;
   }
 
   // Print last line of table

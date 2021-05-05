@@ -3,6 +3,6 @@
 
 namespace sir {
 
-Visualizer::Visualizer(Model* model) : model_{model} {}
+Visualizer::Visualizer(Model& model) : model_{model} {}
 
 }
