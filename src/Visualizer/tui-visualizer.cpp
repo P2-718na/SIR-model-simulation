@@ -13,7 +13,9 @@ TUIVisualizer::TUIVisualizer(Model* model) : Visualizer(model) {}
 
 int TUIVisualizer::computePadding(int biggestNumber) {
   int padding = 0;
-  while ((biggestNumber /= 10) != 0) { ++padding; }
+  while ((biggestNumber /= 10) != 0) {
+    ++padding;
+  }
 
   return padding + 1;
 }
@@ -42,8 +44,11 @@ bool TUIVisualizer::display(int dayCount) const noexcept {
     return false;
   }
 
-  // Compute padding required to display data
-  const int padding = this->computePadding(model_->total());
+  // Compute padding required to display data. Added +1 for readability.
+  const int padding
+    = this->computePadding(
+      dayCount > model_->total() ? dayCount : model_->total())
+    + 1;
 
   // Box characters used
   //    ┌─┬─┐
@@ -72,7 +77,7 @@ bool TUIVisualizer::display(int dayCount) const noexcept {
     model_->step();
 
     // Print state values
-    std::cout << "│" << this->alignRight(day, padding) << "|"
+    std::cout << "│" << this->alignRight(day + 1, padding) << "|"
               << this->alignRight(model_->susceptible(), padding) << "│"
               << this->alignRight(model_->infected(), padding) << "│"
               << this->alignRight(model_->removed(), padding) << "│" << endl;
@@ -85,4 +90,4 @@ bool TUIVisualizer::display(int dayCount) const noexcept {
   return true;
 }
 
-}
+}  // namespace sir
