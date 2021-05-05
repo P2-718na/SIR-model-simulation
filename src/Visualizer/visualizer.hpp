@@ -13,7 +13,7 @@ class Visualizer {
   Model* model_;
 
  public:
-  explicit  Visualizer(Model* model);
+  explicit Visualizer(Model* model);
 };
 
 // Class for visualizing data on the terminal.
