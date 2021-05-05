@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "sir.hpp"
+#include "model.hpp"
 
 int main() {
   sir::Model model{0.2, 0.1, 1000, 1, 0};

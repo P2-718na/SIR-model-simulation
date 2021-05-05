@@ -10,7 +10,7 @@ FIND_PACKAGE(SFML 2.5 COMPONENTS graphics REQUIRED)
 INCLUDE_DIRECTORIES(
         sir-sym PUBLIC
         "${PROJECT_SOURCE_DIR}/src"
-        "${PROJECT_SOURCE_DIR}/src/SIR"
+        "${PROJECT_SOURCE_DIR}/src/Model"
 )
 
 ADD_SUBDIRECTORY(src)

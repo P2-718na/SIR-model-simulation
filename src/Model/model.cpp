@@ -1,9 +1,9 @@
-#include "sir.hpp"
+#include "model.hpp"
 
 #include <cmath>  //todo ask if correct
 #include <stdexcept>
 
-namespace  sir {
+namespace sir {
 // Constructors ////////////////////////////////////////////////////////////////
 Model::Model(
   double beta, double gamma, int susceptible, int infected, int removed) {
