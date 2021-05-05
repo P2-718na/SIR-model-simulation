@@ -105,8 +105,7 @@ void Model::step() noexcept {
 
   // Since s + i + r is constant, update S based on that. This also accounts
   // for floating point and rounding errors.
-  s_ = n_ - i_ - r_;
-
-  // todo check that s is not negative.
+  // S cannot be negative, since infected and removed are rounded down.
+  s_ = n_ - this->infected() - this->removed();
 }
 }
