@@ -2,20 +2,22 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
 
 PROJECT(sir-sym VERSION 0.1)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 FIND_PACKAGE(SFML 2.5 COMPONENTS graphics REQUIRED)
 
 INCLUDE_DIRECTORIES(
-        sir-sym PUBLIC
         "${PROJECT_SOURCE_DIR}/src"
-        "${PROJECT_SOURCE_DIR}/src/SIR"
+        "${PROJECT_SOURCE_DIR}/src/Model"
+        "${PROJECT_SOURCE_DIR}/src/Visualizer"
+        "${PROJECT_SOURCE_DIR}/src/Parser"
+        "${PROJECT_SOURCE_DIR}/dist"
 )
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(tests)
 
-#todo versione debug e release
+# todo versione debug e release
 SET(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -g -fsanitize=address")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} ")
