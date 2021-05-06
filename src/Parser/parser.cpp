@@ -10,6 +10,8 @@ namespace sir {
     bool showHelp = false;
 
     // todo add checks
+    // Generate parser object. (Note that this mus be done inside here, since
+    // it needs to know where to store values.
     cli_ |=
        lyra::help(showHelp)
        | lyra::opt(beta_, "beta")
@@ -34,8 +36,18 @@ namespace sir {
       ["--pretty"]
          ("Prints a pretty table to the terminal.");
 
+    // If no arguments were specified, display help and terminate the program.
+    if (argc == 1) {
+      std::cout << cli_;
+
+      exit(1);
+    }
+
+    // If there are arguments, parse them.
     auto result = cli_.parse({argc, argv});
 
+    // If there was an error parsing arguments, inform the user and terminate
+    // the program.
     if (!result) {
       std::cerr
         << "Error in command line: "
@@ -45,12 +57,11 @@ namespace sir {
       exit(1);
     }
 
-    // Display help if no arguments were specified or if
-    // the user asked for it.
-    if (showHelp || argc == 1) {
+    // Display help and terminate the program if the user asked for it.
+    if (showHelp) {
       std::cout << cli_;
 
-      exit(1);
+      exit(0);
     }
   }
 
