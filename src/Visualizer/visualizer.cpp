@@ -91,9 +91,17 @@ void Visualizer::displayPretty(int dayCount) const noexcept {
 }
 
 
-void Visualizer::display(int dayCount) const noexcept {
+void Visualizer::display(int dayCount, bool displayHeadings) const noexcept {
   if (dayCount <= 0) {
     return;
+  }
+
+  // Print headings if asked by the user
+  if (displayHeadings) {
+    std::cout << "Current_day" << " "
+              << "Susceptible" << " "
+              << "Infected" << " "
+              << "Removed" << endl;
   }
 
   // Print data.

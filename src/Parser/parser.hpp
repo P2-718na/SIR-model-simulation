@@ -20,6 +20,9 @@ class Parser {
   // Display type?
   bool prettyPrint_{false};
 
+  // Add column headings? Always true on prettyPrint.
+  bool noHeadings_{false};
+
 public:
   Parser(int argc, char *argv[]);
 
@@ -30,7 +33,8 @@ public:
   int i() const noexcept;
   int r() const noexcept;
   int dayCount() const noexcept;
-  int prettyPrint() const noexcept;
+  bool prettyPrint() const noexcept;
+  bool displayHeadings() const noexcept;
 };
 
 }  // namespace sir

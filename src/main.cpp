@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
   if (parser.prettyPrint()) {
      visualizer.displayPretty(parser.dayCount());
   } else {
-    visualizer.display(parser.dayCount());
+    visualizer.display(parser.dayCount(), parser.displayHeadings());
   }
 }
 

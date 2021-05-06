@@ -29,7 +29,7 @@ class Visualizer {
 
   // Display bare data. (T, S, I, R format). T indicates day
   // number.
-  void display(int dayCount) const noexcept;
+  void display(int dayCount, bool displayHeadings) const noexcept;
 };
 
 }
