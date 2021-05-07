@@ -43,6 +43,9 @@ to compile tests. Both executables will be generated inside the `src` folder
 //(TODO check tests)
 
 ## Running
+This code was tested and running on _Mac OS X 10.14.6 Mojave_ and
+_Ubuntu 20.04 LTS (running on WSL)_.
+
 ### Running via terminal
 The easiest way to learn how to use this program is to read the help message.
 ```
