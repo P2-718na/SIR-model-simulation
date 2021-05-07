@@ -13,18 +13,18 @@ by [me (Matteo Bonacini)][3].
 
 [1]: https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model
 [2]: https://baltig.infn.it/giaco/pf2020/-/blob/master/progetto/progetto.md
-[3]: asd
+[3]: https://github.com/P2-718na
 
 --------------------------------------------------------------------------------
 
 ## Dependencies
 - [Lyra](https://github.com/bfgroup/Lyra) (bundled)
 - [Doctest](https://github.com/onqtam/doctest) (bundled)
-- [Cmake](https://cmake.org/) (recommended)
+- [CMake](https://cmake.org/) (recommended)
 - [gnuplot](http://www.gnuplot.info/) (optional)
 
 ## Compiling
-The preferred way to build this code is by using Cmake.
+The preferred way to build this code is by using CMake.
 ```bash
 mkdir build
 cd build
@@ -46,9 +46,9 @@ to compile tests. Both executables will be generated inside the `src` folder
 ### Running via terminal
 The easiest way to learn how to use this program is to read the help message.
 ```
-$ sir-sym --help
+$ ./sir-sym --help
 USAGE:
-  <executable> [-?|-h|--help] -b|--beta <beta> -c|--gamma <gamma> -s|--susceptible <susceptible> [-i|--infected <infected>] [-r|--removed <removed>] -t|--day-count <dayCount> [--pretty]
+  <executable> [-?|-h|--help] -b|--beta <beta> -c|--gamma <gamma> -s|--susceptible <susceptible> [-i|--infected <infected>] [-r|--removed <removed>] -t|--day-count <dayCount> [--pretty] [--no-headings]
 
 Display usage information.
 
@@ -64,11 +64,11 @@ OPTIONS, ARGUMENTS:
   -t, --day-count <dayCount>
                           Duration of the simulation.
   --pretty                Prints a pretty table to the terminal.
-
+  --no-headings           Remove headings from normal print.Ignored if --pretty is added as well.
 ```
 Example run with pretty-print option enabled:
 ```
-$ sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
+$ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
 ┌-----┬-----┬-----┬-----┐
 │  T  │  S  │  I  │  R  │
 ├-----┼-----┼-----┼-----┤
@@ -83,17 +83,32 @@ $ sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
 │  161|  198│    1│  802│
 └-----┴-----┴-----┴-----┘
 ```
-The four columns represent the number of susceptible (S), infected(I) and
-retired (people) on each day (T) of the simulation. The initial state of the
+Example run with pretty-print option disabled:
+```
+$ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160
+Current_day Susceptible Infected Removed
+0 1000 1 0
+1 1000 1 0
+2 1000 1 0
+3 1000 1 0
+≠≠≠≠≠≠≠≠≠≠≠≠≠
+160 198 1 802
+```
+Please note that the `≠` symbols mean that the output was truncated.
+The four columns represent the number of susceptible (S), infected (I) and
+retired (R) people on each day (T) of the simulation. The initial state of the
 simulation is printed as well, which means that the number of rows printed is
 one more than the number specified using `--day-count`.
 
 ### Graphing data
 If you have gnuplot installed, you can use it to display the data.
 ```bash
-$ sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 |  \
-  gnuplot -p -e                           \
-  "plot for [col=1:4] '<cat' using 0:col with lines title columnheader"
+./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 | (    \
+  cat > /tmp/sir-sym-data &&                  \
+  trap 'rm /tmp/sir-sym-data' EXIT &&         \
+  gnuplot -p -e                               \
+  "plot for [col=2:4] '/tmp/sir-sym-data'     \
+  using 0:col with lines title columnheader")
 ```
 The previous command will display the following graph:
 ![](assets/gnuplot.png)
@@ -101,15 +116,17 @@ The previous command will display the following graph:
 --------------------------------------------------------------------------------
 
 ## Components
+What follows is a quick overview of the components that make up this program.
+Additional information is present in the comments alongside the code.
 
 ### SIR Model
 todo
 
 ### Visualizer
-Handles the display of table data.
+Handles the display of table data. (TODO)
 
 ### Parser
-todo
+Parse
 
 ### Tests
 todo
