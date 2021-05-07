@@ -111,7 +111,11 @@ If you have gnuplot installed, you can use it to display the data.
   using 0:col with lines title columnheader")
 ```
 The previous command will display the following graph:
+
 ![](assets/gnuplot.png)
+
+### Testing
+TODO
 
 --------------------------------------------------------------------------------
 
@@ -123,7 +127,10 @@ Additional information is present in the comments alongside the code.
 todo
 
 ### Visualizer
-Handles the display of table data. (TODO)
+Class that handles the display of table data. Its constructor takes a reference
+to a `Model` instance. The methods `visualize` and `visualizePretty` will run
+the model for the specified number of days. Please note that the `Model` instance
+will be altered by the visualizer.
 
 ### Parser
 Parse
