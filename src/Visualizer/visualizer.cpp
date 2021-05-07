@@ -44,7 +44,7 @@ void Visualizer::displayPretty(int dayCount) const noexcept {
     return;
   }
 
-  // Compute padding required to display data. Added +1 for readability.
+  // Compute padding required to display data. Add +1 for readability.
   const int padding
      = this->computePadding(
         dayCount > model_.total() ? dayCount : model_.total())
