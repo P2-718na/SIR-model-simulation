@@ -143,7 +143,9 @@ they are the same, since that code might be used elsewhere where no prior checks
 are performed.
 
 ### Tests
-todo
+Unit Tests are performed using Doctest and are build separately from the main
+executable. For additional information on how to run tests, see
+[Testing](#testing).
 
 --------------------------------------------------------------------------------
 
