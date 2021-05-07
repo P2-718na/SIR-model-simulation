@@ -37,7 +37,7 @@ Parser::Parser(int argc, char **argv) {
        ("Prints a pretty table to the terminal.")
     | lyra::opt(noHeadings_)
     ["--no-headings"]
-       ("Remove headings from normal print."
+       ("Remove headings from normal print. "
         "Ignored if --pretty is added as well.");
 
 
