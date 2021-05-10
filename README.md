@@ -169,4 +169,6 @@ to run tests, see [Testing](#testing).
 --------------------------------------------------------------------------------
 
 ## Additional notes
-TODO (valgrind, etc)
+1. A requirement of the project was that there must be no memory leaks or
+illegal memory accesses. This program was run through Valgrind Memcheck
+and is completely clean.
