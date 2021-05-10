@@ -82,14 +82,6 @@ int Model::total() const noexcept {
   return n_;
 };
 
-State Model::state() const noexcept {
-  return {
-    this->susceptible(),
-    this->removed(),
-    this->infected()
-  };
-}
-
 // Methods /////////////////////////////////////////////////////////////////////
 void Model::step() noexcept {
   // I * beta * S / N.

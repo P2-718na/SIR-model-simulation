@@ -2,14 +2,6 @@
 
 namespace sir {
 
-// Struct containing a single state (number of susceptible, infected
-// and removed people).
-struct State {
-  int s;
-  int i;
-  int r;
-};
-
 class Model {
   // Beta parameter for the simulation. Represents infection probability.
   // Must be a value in range [0, 1].
@@ -45,7 +37,7 @@ class Model {
 
   // Accessors /////////////////////////////////////////////////////////////////
   // Getter function for beta.
-  const double& beta() const noexcept;
+  const double& beta() const noexcept; // todo check this
   // Setter function for beta. If newBeta is not in range, returns false
   // and leaves beta unchanged.
   bool beta(double newBeta) noexcept;
@@ -68,9 +60,6 @@ class Model {
 
   // Getter function for total population count.
   int total() const noexcept;
-
-  // Getter function for whole state (s, i, r).
-  State state() const noexcept;
 
   // Methods ///////////////////////////////////////////////////////////////////
   // Simulate one day.
