@@ -162,8 +162,9 @@ are performed.
 
 ### Tests
 Unit Tests are performed using Doctest and are built separately from the main
-executable. For additional information on how to run tests, see
-[Testing](#testing).
+executable. Tests are centered on the Model component, and they check that all
+the constraints imposed by the model are met. For additional information on how  
+to run tests, see [Testing](#testing).
 
 --------------------------------------------------------------------------------
 
