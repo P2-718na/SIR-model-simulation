@@ -37,14 +37,13 @@ class Model {
 
   // Accessors /////////////////////////////////////////////////////////////////
   // Getter function for beta.
-  const double& beta() const noexcept; // todo check this
+  double beta() const noexcept;
   // Setter function for beta. If newBeta is not in range, returns false
   // and leaves beta unchanged.
   bool beta(double newBeta) noexcept;
 
   // Getter function for gamma.
-  // TODO ask const double& vs double const&
-  const double& gamma() const noexcept;
+  double gamma() const noexcept;
   // Setter function for gamma. if newGamma is not in range, returns false
   // and leaves gamma unchanged.
   bool gamma(double newGamma) noexcept;
