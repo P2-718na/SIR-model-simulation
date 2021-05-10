@@ -11,8 +11,8 @@ class Visualizer {
   Model& model_;
 
   // Compute padding required to display numbers correctly up to
-  // biggestNumber.
-  static int computePadding(int biggestNumber); // Todo this will need a test
+  // biggestNumber
+  static int computePadding(int biggestNumber);
 
   // Return a string with a single character centered in the middle.
   // centerChar is the character to print.
