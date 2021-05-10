@@ -17,10 +17,10 @@ class Visualizer {
   // Return a string with a single character centered in the middle.
   // centerChar is the character to print.
   // width is the total width of the resulting string.
-  static std::string center(char centerChar, int width); //todo sanitize arguments
+  static std::string center(char centerChar, int width);
 
   // Return a string with a number aligned to the right.
-  static std::string alignRight(int rightNum, int width); //todo sanitize arguments
+  static std::string alignRight(int rightNum, int width);
 
  public:
   explicit Visualizer(Model& model);
