@@ -40,7 +40,7 @@ Model::Model(
 }
 
 // Accessors ///////////////////////////////////////////////////////////////////
-const double &Model::beta() const noexcept {
+double Model::beta() const noexcept {
   return b_;
 }
 
@@ -53,7 +53,7 @@ bool Model::beta(double newBeta) noexcept {
   return true;
 }
 
-const double &Model::gamma() const noexcept {
+double Model::gamma() const noexcept {
   return c_;
 }
 
