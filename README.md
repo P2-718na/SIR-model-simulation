@@ -151,12 +151,12 @@ functions for them. The parsing is done using Lyra library (see dependencies).
 The parser checks that the input format is correct, and it also performs some
 range checks on the input.
 If there are invalid or missing parameters for the model, they will be caught
-here. I decided not to remove the checks performed in  `Model` class, even if
+here. I decided not to remove the checks performed in `Model` class, even if
 they are the same, since that code might be used elsewhere where no prior checks
 are performed.
 
 ### Tests
-Unit Tests are performed using Doctest and are build separately from the main
+Unit Tests are performed using Doctest and are built separately from the main
 executable. For additional information on how to run tests, see
 [Testing](#testing).
 
