@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="200" src="assets/unibo-logo.png">
+  <img src="assets/unibo-logo.png">
 </p>
 
 # SIR-model-simulation
@@ -111,7 +111,7 @@ If you have gnuplot installed, you can use it to display the data.
 The previous command will display the following graph:
 
 <p align="center">
-  <img height="400" src="assets/gnuplot.png">
+  <img src="assets/gnuplot.png">
 </p>
 
 ### Testing
@@ -131,7 +131,7 @@ Class that handles the calculations of the SIR model. The model used consists
 of three differential equations:
 
 <p align="center">
-  <img height="200" src="assets/equations.png">
+  <img src="assets/equations.png">
 </p>
 
 Where `S`, `I` and `R` represent respectively the number of susceptible, infected and
