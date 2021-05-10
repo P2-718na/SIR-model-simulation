@@ -77,7 +77,7 @@ $ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
 ├-----┼-----┼-----┼-----┤
 │    3| 1000│    1│    0│
 ├-----┼-----┼-----┼-----┤
-≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠
+≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠
 ├-----┼-----┼-----┼-----┤
 │  161|  198│    1│  802│
 └-----┴-----┴-----┴-----┘
@@ -126,7 +126,18 @@ What follows is a quick overview of the components that make up this program.
 Additional information is present in the comments alongside the code.
 
 ### SIR Model
-todo
+Class that handles the calculations of the SIR model. The model used consists
+of three differential equations:
+![](assets/equations.png)
+Where `S`, `I` and `R` represent respectively the number of susceptible, infected and
+removed (dead/vaccinated/recovered) people. The equations are solved
+numerically, using an arbitrary value of `dS = 1 day`. The value of `S` is
+computed using the constraint that `S + I + R` is constant throughout the
+simulation.
+`S`, `I` and `R` are handled internally as `double` types, but the respective
+getter (or setter) functions will return (or accept) an integer value.
+This was done because these three variables must be natural numbers, but decimal
+numbers are required for solving the equations correctly.
 
 ### Visualizer
 Class that handles the display of table data. Its constructor takes a reference
