@@ -23,24 +23,20 @@ by [me (Matteo Bonacini)][3].
 - [CMake](https://cmake.org/) (recommended)
 - [gnuplot](http://www.gnuplot.info/) (optional)
 
-## Compiling
-The preferred way to build this code is by using CMake.
-```bash
+## Building
+The preferred way to compile this code is by using CMake.
+```shell
 mkdir build
 cd build
 cmake ..
 ```
-Then, run
-```bash
-make sir-sym
+Then, run either of these
+```shell
+make sir-sym  # compile the program only
+make tests    # compile tests only
+make          # compile both
 ```
-to compile the program, or
-```bash
-make tests
-```
-to compile tests. Both executables will be generated inside the `src` folder
-(inside your build folder).
-//(TODO check tests)
+Both executables will be generated inside the build folder.
 
 ## Running
 This code was tested and running on _Mac OS X 10.14.6 Mojave_ and
@@ -105,7 +101,7 @@ one more than the number specified using `--day-count`.
 
 ### Graphing data
 If you have gnuplot installed, you can use it to display the data.
-```bash
+```shell
 ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 | (    \
   cat > /tmp/sir-sym-data &&                  \
   trap 'rm /tmp/sir-sym-data' EXIT &&         \
@@ -118,7 +114,10 @@ The previous command will display the following graph:
 ![](assets/gnuplot.png)
 
 ### Testing
-TODO
+Make sure to [compile tests](#building), then run
+```shell
+./sir-sym-tests
+```
 
 --------------------------------------------------------------------------------
 
