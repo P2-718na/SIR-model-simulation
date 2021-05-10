@@ -5,9 +5,8 @@
 # SIR-model-simulation
 This is a very basic implementation of the [SIR model for virus spreading][1].
 It lets you visualize how the three differential equations evolve over time, by
-printing a table to the terminal.
-This is the first part of my coding exam [final project][2] at University of
-Bologna, year one physics course.
+printing a table to the terminal. This is the first part of my coding exam
+[final project][2] at University of Bologna, year one physics course.  
 All the code in this project (excluding external libraries) is written entirely
 by [me (Matteo Bonacini)][3].
 
@@ -30,7 +29,7 @@ mkdir build
 cd build
 cmake ..
 ```
-Then, run either of these
+Then, run either of these commands
 ```shell
 make sir-sym  # compile the program only
 make tests    # compile tests only
@@ -93,7 +92,7 @@ Current_day Susceptible Infected Removed
 ≠≠≠≠≠≠≠≠≠≠≠≠≠
 160 198 1 802
 ```
-Please note that the `≠` symbols mean that the output was truncated.
+Please note that the `≠` symbols mean that the output was truncated.  
 The four columns represent the number of susceptible (S), infected (I) and
 retired (R) people on each day (T) of the simulation. The initial state of the
 simulation is printed as well, which means that the number of rows printed is
@@ -111,7 +110,9 @@ If you have gnuplot installed, you can use it to display the data.
 ```
 The previous command will display the following graph:
 
-![](assets/gnuplot.png)
+<p align="center">
+  <img height="400" src="assets/gnuplot.png">
+</p>
 
 ### Testing
 Make sure to [compile tests](#building), then run
@@ -128,7 +129,11 @@ Additional information is present in the comments alongside the code.
 ### SIR Model
 Class that handles the calculations of the SIR model. The model used consists
 of three differential equations:
-![](assets/equations.png)
+
+<p align="center">
+  <img height="200" src="assets/equations.png">
+</p>
+
 Where `S`, `I` and `R` represent respectively the number of susceptible, infected and
 removed (dead/vaccinated/recovered) people. The equations are solved
 numerically, using an arbitrary value of `dS = 1 day`. The value of `S` is
@@ -136,7 +141,7 @@ computed using the constraint that `S + I + R` is constant throughout the
 simulation.
 `S`, `I` and `R` are handled internally as `double` types, but the respective
 getter (or setter) functions will return (or accept) an integer value.
-This was done because these three variables must be natural numbers, but decimal
+This was done because these three variables represent natural numbers, but decimal
 numbers are required for solving the equations correctly.
 
 ### Visualizer
@@ -163,4 +168,4 @@ executable. For additional information on how to run tests, see
 --------------------------------------------------------------------------------
 
 ## Additional notes
-(todo, valgrind, etc)
+TODO (valgrind, etc)
