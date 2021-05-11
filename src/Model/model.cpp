@@ -9,26 +9,26 @@ Model::Model(
   double beta, double gamma, int susceptible, int infected, int removed) {
   // Check values for beta and gamma parameters.
   if (!this->beta(beta)) {
-    throw std::range_error("beta parameter is not in range.");
+    throw std::range_error("beta parameter out of range.");
   }
 
   if (!this->gamma(gamma)) {
-    throw std::range_error("gamma parameter is not in range.");
+    throw std::range_error("gamma parameter out of range.");
   }
 
   // Check values for s, i, r parameters.
-  if (susceptible < 0) {
-    throw std::range_error("susceptible parameter must be positive.");
+  if (susceptible < 0 || susceptible >= 5E6) {
+    throw std::range_error("susceptible parameter out of range.");
   }
   s_ = susceptible;
 
-  if (infected < 0) {
-    throw std::range_error("infected parameter must be positive.");
+  if (infected < 0 || infected >= 5E6) {
+    throw std::range_error("infected parameter out of range.");
   }
   i_ = infected;
 
-  if (removed < 0) {
-    throw std::range_error("removed parameter must be positive.");
+  if (removed < 0 || removed >= 5E6) {
+    throw std::range_error("removed parameter out of range.");
   }
   r_ = removed;
 
@@ -91,13 +91,13 @@ void Model::step() noexcept {
   const double ci = c_ * i_;
 
   // Update values
-  // s_ -= bsni; Don't update S just yet...
+  s_ -= bsni;
   i_ += bsni - ci;
-  r_ += ci;
+  //r_ += ci; Don't update R just yet...
 
-  // Since s + i + r is constant, update S based on that. This also accounts
+  // Since s + i + r is constant, update R based on that. This also accounts
   // for floating point and rounding errors.
-  // S cannot be negative, since infected and removed are rounded down.
-  s_ = n_ - this->infected() - this->removed();
+  // R cannot be negative, since susceptible and infected are rounded down.
+  r_ = n_ - this->susceptible() - this->infected();
 }
 }

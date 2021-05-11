@@ -17,14 +17,17 @@ class Model {
 
   // Represents people who might get infected.
   // Fixed at the beginning of the simulation.
+  // Must be a number greater than 0 and lesser than 500 million.
   double s_;
 
   // Represents people who are infected and can infect others.
   // Fixed at the beginning of the simulation.
+  // Must be a number greater than 0 and lesser than 500 million.
   double i_;
 
   // Represents dead, healed or quarantined people.
   // Fixed at the beginning of the simulation.
+  // Must be a number greater than 0 and lesser than 500 million.
   double r_;
 
   // Total count (s_ + i_ + r_)
