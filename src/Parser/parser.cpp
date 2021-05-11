@@ -9,8 +9,7 @@ namespace sir {
 Parser::Parser(int argc, char **argv) {
   bool showHelp = false;
 
-  // todo add checks
-  // Generate parser object. (Note that this mus be done inside here, since
+  // Generate parser object. (Note that this must be declared inside here, since
   // it needs to know where to store values.
   cli_ |=
      lyra::help(showHelp)
@@ -32,6 +31,7 @@ Parser::Parser(int argc, char **argv) {
      | lyra::opt(dayCount_, "dayCount")
      ["-t"]["--day-count"]
         ("Duration of the simulation.").required()
+        .choices([](int val) { return val >= 0; })
     | lyra::opt(prettyPrint_)
     ["--pretty"]
        ("Prints a pretty table to the terminal.")
