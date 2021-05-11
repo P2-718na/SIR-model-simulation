@@ -16,6 +16,7 @@ int main(int argc, char* argv[]) {
     // Initialise visualizer
     sir::Visualizer visualizer{model};
 
+    // todo la roba qua sotto non può throware, va rimossa dal try
     // Visualize data
     if (parser.prettyPrint()) {
       visualizer.displayPretty(parser.dayCount());
