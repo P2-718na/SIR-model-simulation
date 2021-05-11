@@ -93,7 +93,7 @@ void Model::step() noexcept {
   // Update values
   s_ -= bsni;
   i_ += bsni - ci;
-  r_ += ci; // Don't update R just yet...
+  //r_ += ci; Don't update R just yet...
 
   // Since s + i + r is constant, update R based on that. This also accounts
   // for floating point and rounding errors.
