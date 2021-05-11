@@ -153,12 +153,12 @@ will be altered by the visualizer.
 ### Parser
 Class that handles the parsing of command line arguments and exposes getter
 functions for them. The parsing is done using Lyra library (see dependencies).
-The parser checks that the input format is correct, and it also performs some
-range checks on the input.
-If there are invalid or missing parameters for the model, they will be caught
-here. I decided not to remove the checks performed in `Model` class, even if
-they are the same, since that code might be used elsewhere where no prior checks
-are performed.
+The parser checks that the input format is correct.
+The only value check performed here is for the `--day-count` parameter (if it is
+negative, an error is shown). This is not strictly needed, but it can be helpful
+to the user, since there are no explicit warnings for this anywhere else.  
+All the needed value checks on parameters are performed inside the `Model` class
+constructor.
 
 ### Tests
 Unit Tests are performed using Doctest and are built separately from the main
