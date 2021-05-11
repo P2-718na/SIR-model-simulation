@@ -83,8 +83,7 @@ $ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
 ```
 Example run with pretty-print option disabled:
 ```
-$ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160
-Current_day Susceptible Infected Removed
+$ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --no-headings
 0 1000 1 0
 1 1000 1 0
 2 1000 1 0
