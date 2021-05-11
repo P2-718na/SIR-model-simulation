@@ -118,7 +118,6 @@ TEST_CASE("SIR Model with random values") {
           greaterThanZero(generator)};
   }
 
-  printf("%d %d %d\n", td.s, td.i, td.r);
   REQUIRE(td.s + td.i + td.r > 0) ;
 
   sir::Model model = sir::Model{td.b, td.c, td.s, td.i, td.r};

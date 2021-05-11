@@ -91,14 +91,13 @@ void Model::step() noexcept {
   const double ci = c_ * i_;
 
   // Update values
-  // s_ -= bsni; Don't update S just yet...
+  s_ -= bsni;
   i_ += bsni - ci;
-  r_ += ci;
+  r_ += ci; // Don't update R just yet...
 
-  // Since s + i + r is constant, update S based on that. This also accounts
+  // Since s + i + r is constant, update R based on that. This also accounts
   // for floating point and rounding errors.
-  // S cannot be negative, since infected and removed are rounded down.
-  //fixme this does not work. fix. pls.
-  s_ = n_ - this->infected() - this->removed();
+  // R cannot be negative, since susceptible and infected are rounded down.
+  r_ = n_ - this->susceptible() - this->infected();
 }
 }
