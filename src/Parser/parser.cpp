@@ -6,7 +6,7 @@
 
 namespace sir {
 
-Parser::Parser(int argc, char **argv) {
+Parser::Parser(int argc, char** argv) {
   bool showHelp = false;
 
   // Generate parser object. (Note that this must be declared inside here, since
