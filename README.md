@@ -31,7 +31,7 @@ cmake ..
 ```
 Then, run either of these commands
 ```shell
-make sir-sym  # compile the program only
+make sir  # compile the program only
 make tests    # compile tests only
 make          # compile both
 ```
@@ -44,7 +44,7 @@ _Ubuntu 20.04 LTS (running on WSL)_.
 ### Running via terminal
 The easiest way to learn how to use this program is to read the help message.
 ```
-$ ./sir-sym --help
+$ ./sir --help
 USAGE:
   <executable> [-?|-h|--help] -b|--beta <beta> -c|--gamma <gamma> -s|--susceptible <susceptible> [-i|--infected <infected>] [-r|--removed <removed>] -t|--day-count <dayCount> [--pretty] [--no-headings]
 
@@ -53,7 +53,7 @@ Display usage information.
 OPTIONS, ARGUMENTS:
   -?, -h, --help
   -b, --beta <beta>       Beta constant. Must be a number in range [0, 1].
-  -c, --gamma <gamma>     Gamma constant. Must be a number in range [0, 1].
+  -c, -g, --gamma <gamma>     Gamma constant. Must be a number in range [0, 1].
   -s, --susceptible <susceptible>
                           Number of susceptible people.
   -i, --infected <infected>
@@ -66,7 +66,7 @@ OPTIONS, ARGUMENTS:
 ```
 Example run with pretty-print option enabled:
 ```
-$ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
+$ ./sir -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
 ┌-----┬-----┬-----┬-----┐
 │  T  │  S  │  I  │  R  │
 ├-----┼-----┼-----┼-----┤
@@ -83,7 +83,7 @@ $ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --pretty
 ```
 Example run with pretty-print option disabled:
 ```
-$ ./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 --no-headings
+$ ./sir -b 0.2 -c 0.1 -s 1000 -t 160 --no-headings
 0 1000 1 0
 1 1000 1 0
 2 1000 1 0
@@ -100,11 +100,11 @@ one more than the number specified using `--day-count`.
 ### Graphing data
 If you have gnuplot installed, you can use it to display the data.
 ```shell
-./sir-sym -b 0.2 -c 0.1 -s 1000 -t 160 | (    \
-  cat > /tmp/sir-sym-data &&                  \
-  trap 'rm /tmp/sir-sym-data' EXIT &&         \
+./sir -b 0.2 -c 0.1 -s 1000 -t 160 | (    \
+  cat > /tmp/sir-data &&                  \
+  trap 'rm /tmp/sir-data' EXIT &&         \
   gnuplot -p -e                               \
-  "plot for [col=2:4] '/tmp/sir-sym-data'     \
+  "plot for [col=2:4] '/tmp/sir-data'     \
   using 0:col with lines title columnheader")
 ```
 The previous command will display the following graph:
@@ -116,7 +116,7 @@ The previous command will display the following graph:
 ### Testing
 Make sure to [compile tests](#building), then run
 ```shell
-./sir-sym-tests
+./sir-tests
 ```
 
 --------------------------------------------------------------------------------

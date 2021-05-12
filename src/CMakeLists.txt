@@ -1,12 +1,12 @@
-ADD_EXECUTABLE(sir-sym main.cpp)
+ADD_EXECUTABLE(sir main.cpp)
 
 ADD_SUBDIRECTORY(Model)
 ADD_SUBDIRECTORY(Visualizer)
 ADD_SUBDIRECTORY(Parser)
 
-TARGET_LINK_LIBRARIES(sir-sym sir-model sir-visualizer parser)
+TARGET_LINK_LIBRARIES(sir sir-model sir-visualizer parser)
 
 set_target_properties(
-        sir-sym PROPERTIES
+        sir PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}"
 )
