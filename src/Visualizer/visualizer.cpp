@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include "model.hpp"
 #include "visualizer.hpp"
+#include "model.hpp"
 
 // Added to remove unnecessary characters in cout statements.
 using std::endl;
@@ -45,10 +45,9 @@ void Visualizer::displayPretty(int dayCount) const noexcept {
   }
 
   // Compute padding required to display data. Add +1 for readability.
-  const int padding
-     = this->computePadding(
-        dayCount > model_.total() ? dayCount : model_.total())
-       + 1;
+  const int padding =
+    this->computePadding(dayCount > model_.total() ? dayCount : model_.total())
+    + 1;
 
   // Box characters used
   //    ┌─┬─┐
@@ -90,7 +89,6 @@ void Visualizer::displayPretty(int dayCount) const noexcept {
             << endl;
 }
 
-
 void Visualizer::display(int dayCount, bool displayHeadings) const noexcept {
   if (dayCount <= 0) {
     return;
@@ -98,9 +96,12 @@ void Visualizer::display(int dayCount, bool displayHeadings) const noexcept {
 
   // Print headings if asked by the user
   if (displayHeadings) {
-    std::cout << "Current_day" << " "
-              << "Susceptible" << " "
-              << "Infected" << " "
+    std::cout << "Current_day"
+              << " "
+              << "Susceptible"
+              << " "
+              << "Infected"
+              << " "
               << "Removed" << endl;
   }
 
@@ -109,13 +110,12 @@ void Visualizer::display(int dayCount, bool displayHeadings) const noexcept {
   // initial state is printed as well.
   for (int day = 0; day != dayCount + 1; ++day) {
     // Print state values.
-    std::cout << day << " " << model_.susceptible()
-              << " " << model_.infected()
-              << " " << model_.removed()
-              << endl;
+    std::cout << day << " " << model_.susceptible() << " " << model_.infected()
+              << " " << model_.removed() << endl;
 
     // Simulate one day.
     model_.step();
   }
 }
-}
+
+}  // namespace sir

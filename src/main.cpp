@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "model.hpp"
-#include "visualizer.hpp"
 #include "parser.hpp"
+#include "visualizer.hpp"
 
 int main(int argc, char* argv[]) {
   // Catch errors in constructors
@@ -11,7 +11,8 @@ int main(int argc, char* argv[]) {
     sir::Parser parser{argc, argv};
 
     // Initialise model
-    sir::Model model{parser.b(), parser.c(), parser.s(), parser.i(), parser.r()};
+    sir::Model model{
+      parser.b(), parser.c(), parser.s(), parser.i(), parser.r()};
 
     // Initialise visualizer
     sir::Visualizer visualizer{model};
@@ -28,7 +29,7 @@ int main(int argc, char* argv[]) {
     visualizer.display(parser.dayCount(), parser.displayHeadings());
 
     return EXIT_SUCCESS;
-  } catch (const std::range_error &error) {
+  } catch (const std::range_error& error) {
     std::cerr << "Error: " << error.what() << std::endl;
 
     return EXIT_FAILURE;
@@ -38,4 +39,3 @@ int main(int argc, char* argv[]) {
     return EXIT_FAILURE;
   }
 }
-

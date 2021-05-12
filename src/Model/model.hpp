@@ -69,6 +69,6 @@ class Model {
   void step() noexcept;
 };
 
-} // namespace sir
+}  // namespace sir
 
 #endif

@@ -39,6 +39,6 @@ class Visualizer {
   void display(int dayCount, bool displayHeadings) const noexcept;
 };
 
-} // namespace sir
+}  // namespace sir
 
 #endif

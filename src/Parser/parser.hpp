@@ -24,7 +24,7 @@ class Parser {
   // Add column headings? Always true on prettyPrint.
   bool noHeadings_{false};
 
-public:
+ public:
   Parser(int argc, char *argv[]);
 
   // Getter functions.

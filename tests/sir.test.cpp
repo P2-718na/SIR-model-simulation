@@ -28,7 +28,7 @@ struct TestData {
 };
 
 // Overload function used by doctest CAPTURE function.
-std::ostream& operator<< (std::ostream& os, const TestData& value) {
+std::ostream& operator<<(std::ostream& os, const TestData& value) {
   os << "b: " << value.b << ", c: " << value.c << ", s: " << value.s
      << ", i: " << value.i << ", r: " << value.r;
   return os;
@@ -96,23 +96,23 @@ TEST_CASE("Model test with random values") {
   }
   SUBCASE("") {
     td = {betaGamma(generator), betaGamma(generator),
-          greaterThanZero(generator), greaterThanZero(generator),
-          greaterThanZero(generator)};
+      greaterThanZero(generator), greaterThanZero(generator),
+      greaterThanZero(generator)};
   }
   SUBCASE("") {
     td = {betaGamma(generator), betaGamma(generator),
-          greaterThanZero(generator), greaterThanZero(generator),
-          greaterThanZero(generator)};
+      greaterThanZero(generator), greaterThanZero(generator),
+      greaterThanZero(generator)};
   }
   SUBCASE("") {
     td = {betaGamma(generator), betaGamma(generator),
-          greaterThanZero(generator), greaterThanZero(generator),
-          greaterThanZero(generator)};
+      greaterThanZero(generator), greaterThanZero(generator),
+      greaterThanZero(generator)};
   }
   SUBCASE("") {
     td = {betaGamma(generator), betaGamma(generator),
-          greaterThanZero(generator), greaterThanZero(generator),
-          greaterThanZero(generator)};
+      greaterThanZero(generator), greaterThanZero(generator),
+      greaterThanZero(generator)};
   }
 
   CAPTURE(td);
@@ -129,12 +129,10 @@ TEST_CASE("Model test with random values") {
     model.step();
 
     CHECK_EQ(
-      model.susceptible() + model.infected() + model.removed(),
-      model.total());
+      model.susceptible() + model.infected() + model.removed(), model.total());
 
     CHECK(model.susceptible() >= 0);
     CHECK(model.infected() >= 0);
     CHECK(model.removed() >= 0);
   }
 }
-

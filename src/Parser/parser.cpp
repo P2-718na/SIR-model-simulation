@@ -1,8 +1,8 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "lyra/lyra.hpp"
 #include "parser.hpp"
+#include "lyra/lyra.hpp"
 
 namespace sir {
 
@@ -11,6 +11,7 @@ Parser::Parser(int argc, char **argv) {
 
   // Generate parser object. (Note that this must be declared inside here, since
   // it needs to know where to store values.
+  /* clang-format off */
   cli_ |=
      lyra::help(showHelp)
      | lyra::opt(beta_, "beta")
@@ -39,7 +40,7 @@ Parser::Parser(int argc, char **argv) {
     ["--no-headings"]
        ("Remove headings from normal print. "
         "Ignored if --pretty is added as well.");
-
+  /* clang-format on */
 
   // If no arguments were specified, display help and terminate the program.
   if (argc == 1) {
@@ -54,10 +55,8 @@ Parser::Parser(int argc, char **argv) {
   // If there was an error parsing arguments, inform the user and terminate
   // the program.
   if (!result) {
-    std::cerr
-      << "Error in command line: "
-      << result.errorMessage()
-      << std::endl;
+    std::cerr << "Error in command line: " << result.errorMessage()
+              << std::endl;
 
     exit(EXIT_FAILURE);
   }
@@ -102,4 +101,4 @@ bool Parser::displayHeadings() const noexcept {
   return !noHeadings_;
 }
 
-}
+}  // namespace sir
