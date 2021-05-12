@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PARSER_HPP
+#define PARSER_HPP
 
 #include "lyra/lyra.hpp"
 
@@ -38,3 +39,5 @@ public:
 };
 
 }  // namespace sir
+
+#endif

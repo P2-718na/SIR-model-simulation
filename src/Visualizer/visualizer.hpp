@@ -1,4 +1,6 @@
-#pragma once
+#ifndef VISUALIZER_HPP
+#define VISUALIZER_HPP
+
 #include <string>
 
 namespace sir {
@@ -37,4 +39,6 @@ class Visualizer {
   void display(int dayCount, bool displayHeadings) const noexcept;
 };
 
-}
+} // namespace sir
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MODEL_HPP
+#define MODEL_HPP
 
 namespace sir {
 
@@ -67,4 +68,7 @@ class Model {
   // Simulate one day.
   void step() noexcept;
 };
-}
+
+} // namespace sir
+
+#endif
