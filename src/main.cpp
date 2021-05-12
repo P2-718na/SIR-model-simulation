@@ -5,7 +5,7 @@
 #include "parser.hpp"
 
 int main(int argc, char* argv[]) {
-  //todo w8 for smart pointers
+  // Catch errors in constructors
   try {
     // Parse CLI Arguments
     sir::Parser parser{argc, argv};
@@ -16,24 +16,26 @@ int main(int argc, char* argv[]) {
     // Initialise visualizer
     sir::Visualizer visualizer{model};
 
-    // todo la roba qua sotto non può throware, va rimossa dal try
-    // Visualize data
+    // If prettyprint is enabled, visualize pretty data and terminate
+    // the program.
     if (parser.prettyPrint()) {
       visualizer.displayPretty(parser.dayCount());
-    } else {
-      visualizer.display(parser.dayCount(), parser.displayHeadings());
+
+      return EXIT_SUCCESS;
     }
+
+    // Otherwise, display normal data and terminate.
+    visualizer.display(parser.dayCount(), parser.displayHeadings());
+
+    return EXIT_SUCCESS;
   } catch (const std::range_error &error) {
     std::cerr << "Error: " << error.what() << std::endl;
 
-    return 1;
+    return EXIT_FAILURE;
   } catch (...) {
     std::cerr << "Something went horribly wrong. Terminating." << std::endl;
 
-    return 1;
+    return EXIT_FAILURE;
   }
-
-  // Return
-  return 0;
 }
 

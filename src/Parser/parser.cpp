@@ -17,7 +17,7 @@ Parser::Parser(int argc, char **argv) {
      ["-b"]["--beta"]
         ("Beta constant. Must be a number in range [0, 1].").required()
      | lyra::opt(gamma_, "gamma")
-     ["-c"]["--gamma"]
+     ["-c"]["-g"]["--gamma"]
         ("Gamma constant. Must be a number in range [0, 1].").required()
      | lyra::opt(susceptible_, "susceptible")
      ["-s"]["--susceptible"]
@@ -45,7 +45,7 @@ Parser::Parser(int argc, char **argv) {
   if (argc == 1) {
     std::cout << cli_;
 
-    exit(1);
+    exit(EXIT_FAILURE);
   }
 
   // If there are arguments, parse them.
@@ -59,14 +59,14 @@ Parser::Parser(int argc, char **argv) {
       << result.errorMessage()
       << std::endl;
 
-    exit(1);
+    exit(EXIT_FAILURE);
   }
 
   // Display help and terminate the program if the user asked for it.
   if (showHelp) {
     std::cout << cli_;
 
-    exit(0);
+    exit(EXIT_SUCCESS);
   }
 }
 

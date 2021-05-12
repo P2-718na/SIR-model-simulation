@@ -1,6 +1,6 @@
 #include "model.hpp"
 
-#include <cmath>  //todo ask if correct
+#include <cmath>
 #include <stdexcept>
 
 namespace sir {
