@@ -113,6 +113,15 @@ The previous command will display the following graph:
   <img src="assets/gnuplot.png">
 </p>
 
+If you are running on WSL 1, you might get this error:
+```shell
+gnuplot: error while loading shared libraries: libQt5Core.so.5: cannot open shared object file
+```
+It can be solved by running
+```shell
+sudo strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+```
+
 ### Testing
 Make sure to [compile tests](#building), then run
 ```shell
