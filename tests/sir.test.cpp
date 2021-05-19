@@ -38,10 +38,10 @@ TEST_CASE("Model class constructor works correctly.") {
   sir::Model* model;
   TestData td;
 
-  SUBCASE("Valori corretti 1") {
+  SUBCASE("Correct values 1") {
     td = TestData{0, 1, 1, 2, 3};
   }
-  SUBCASE("Valori corretti 2") {
+  SUBCASE("Correct values 2") {
     td = TestData{0.2, 0.8, 5, 9, 14};
   }
 
@@ -63,19 +63,19 @@ TEST_CASE("Model class constructor works correctly.") {
 TEST_CASE("Model class constructor throws for incorrect values.") {
   TestData td;
 
-  SUBCASE("Valori incorretti 1") {
+  SUBCASE("Incorrect values 1") {
     td = TestData{-1, 1, 1, 2, 3};
   }
-  SUBCASE("Valori incorretti 1") {
+  SUBCASE("Incorrect values 2") {
     td = TestData{1, 2, 1, 2, 3};
   }
-  SUBCASE("Valori incorretti 1") {
+  SUBCASE("Incorrect values 3") {
     td = TestData{0.5, 1, -1, -2, 3};
   }
-  SUBCASE("Valori incorretti 1") {
+  SUBCASE("Incorrect values 4") {
     td = TestData{0.5, 1, 0, 0, 0};
   }
-  SUBCASE("Valori incorretti 1") {
+  SUBCASE("Incorrect values 5") {
     td = TestData{0.5, 1, 0, 0, 5000000};
   }
 
