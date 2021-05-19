@@ -46,8 +46,7 @@ void Visualizer::displayPretty(int dayCount) const noexcept {
 
   // Compute padding required to display data. Add +1 for readability.
   const int padding =
-    this->computePadding(dayCount > model_.total() ? dayCount : model_.total())
-    + 1;
+    computePadding(dayCount > model_.total() ? dayCount : model_.total()) + 1;
 
   // Box characters used
   //    ┌─┬─┐
@@ -62,9 +61,9 @@ void Visualizer::displayPretty(int dayCount) const noexcept {
             << endl;
 
   // Print T, S, I, R, centered.
-  std::cout << "│" << this->center('T', padding) << "│"
-            << this->center('S', padding) << "│" << this->center('I', padding)
-            << "│" << this->center('R', padding) << "│" << endl;
+  std::cout << "│" << center('T', padding) << "│" << center('S', padding) << "│"
+            << center('I', padding) << "│" << center('R', padding) << "│"
+            << endl;
 
   // Print table body.
   // Note that the number of values printed is dayCount + 1, since the
@@ -75,10 +74,10 @@ void Visualizer::displayPretty(int dayCount) const noexcept {
               << endl;
 
     // Print state values.
-    std::cout << "│" << this->alignRight(day + 1, padding) << "|"
-              << this->alignRight(model_.susceptible(), padding) << "│"
-              << this->alignRight(model_.infected(), padding) << "│"
-              << this->alignRight(model_.removed(), padding) << "│" << endl;
+    std::cout << "│" << alignRight(day + 1, padding) << "|"
+              << alignRight(model_.susceptible(), padding) << "│"
+              << alignRight(model_.infected(), padding) << "│"
+              << alignRight(model_.removed(), padding) << "│" << endl;
 
     // Simulate one day.
     model_.step();

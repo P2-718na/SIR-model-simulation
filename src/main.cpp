@@ -21,7 +21,6 @@ int main(int argc, char* argv[]) {
     // the program.
     if (parser.prettyPrint()) {
       visualizer.displayPretty(parser.dayCount());
-
       return EXIT_SUCCESS;
     }
 
@@ -31,11 +30,9 @@ int main(int argc, char* argv[]) {
     return EXIT_SUCCESS;
   } catch (const std::range_error& error) {
     std::cerr << "Error: " << error.what() << std::endl;
-
     return EXIT_FAILURE;
   } catch (...) {
     std::cerr << "Something went horribly wrong. Terminating." << std::endl;
-
     return EXIT_FAILURE;
   }
 }

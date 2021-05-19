@@ -40,4 +40,4 @@ class Parser {
 
 }  // namespace sir
 
-#endif
+#endif // define PARSER_HPP

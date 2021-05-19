@@ -7,21 +7,22 @@ namespace sir {
 
 class Model;
 
-// Class for visualizing data on the terminal.
 class Visualizer {
   // Handler to the model used in this visualizer.
   Model& model_;
 
   // Compute padding required to display numbers correctly up to
-  // biggestNumber
+  // biggestNumber. Used in prettyPrint.
   static int computePadding(int biggestNumber);
 
   // Return a string with a single character centered in the middle.
   // centerChar is the character to print.
   // width is the total width of the resulting string.
+  // Used in prettyPrint.
   static std::string center(char centerChar, int width);
 
   // Return a string with a number aligned to the right.
+  // Used in prettyPrint.
   static std::string alignRight(int rightNum, int width);
 
  public:
@@ -41,4 +42,4 @@ class Visualizer {
 
 }  // namespace sir
 
-#endif
+#endif  // define VISUALIZER_HPP

@@ -74,4 +74,4 @@ class Model {
 
 }  // namespace sir
 
-#endif
+#endif // define MODEL_HPP
