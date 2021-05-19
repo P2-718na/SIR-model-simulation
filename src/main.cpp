@@ -11,8 +11,8 @@ int main(int argc, char* argv[]) {
     sir::Parser parser{argc, argv};
 
     // Initialise model
-    sir::Model model{
-      parser.b(), parser.c(), parser.s(), parser.i(), parser.r()};
+    sir::Model model{parser.beta(), parser.gamma(), parser.susceptible(),
+      parser.infected(), parser.removed()};
 
     // Initialise visualizer
     sir::Visualizer visualizer{model};

@@ -9,43 +9,46 @@ namespace sir {
 Parser::Parser(int argc, char** argv) {
   bool showHelp = false;
 
-  // Generate parser object. (Note that this must be declared inside here, since
-  // it needs to know where to store values.
+  // Generate parser object. (Note that this must be declared inside here, it
+  // cannot be a static object).
   /* clang-format off */
   cli_ |=
      lyra::help(showHelp)
      | lyra::opt(beta_, "beta")
      ["-b"]["--beta"]
-        ("Beta constant. Must be a number in range [0, 1].").required()
+       ("Beta constant. Must be a number in range [0, 1].")
+       .required()
      | lyra::opt(gamma_, "gamma")
      ["-c"]["-g"]["--gamma"]
-        ("Gamma constant. Must be a number in range [0, 1].").required()
+       ("Gamma constant. Must be a number in range [0, 1].")
+       .required()
      | lyra::opt(susceptible_, "susceptible")
      ["-s"]["--susceptible"]
-        ("Number of susceptible people.").required()
+       ("Number of susceptible people.")
+       .required()
      | lyra::opt(infected_, "infected")
      ["-i"]["--infected"]
-        ("Number of infected people. Defaults to 1.")
+       ("Number of infected people. Defaults to 1.")
      | lyra::opt(removed_, "removed")
      ["-r"]["--removed"]
-        ("Number of removed people. Defaults to 0.")
+       ("Number of removed people. Defaults to 0.")
      | lyra::opt(dayCount_, "dayCount")
      ["-t"]["--day-count"]
-        ("Duration of the simulation.").required()
-        .choices([](int val) { return val >= 0; })
+       ("Duration of the simulation.")
+       .required()
+       .choices([](int val) { return val >= 0; })
     | lyra::opt(prettyPrint_)
     ["--pretty"]
-       ("Prints a pretty table to the terminal.")
+      ("Prints a pretty table to the terminal.")
     | lyra::opt(noHeadings_)
     ["--no-headings"]
-       ("Remove headings from normal print. "
-        "Ignored if --pretty is added as well.");
+      ("Remove headings from normal print. "
+       "Ignored if --pretty is added as well.");
   /* clang-format on */
 
   // If no arguments were specified, display help and terminate the program.
   if (argc == 1) {
     std::cout << cli_;
-
     exit(EXIT_FAILURE);
   }
 
@@ -57,35 +60,33 @@ Parser::Parser(int argc, char** argv) {
   if (!result) {
     std::cerr << "Error in command line: " << result.errorMessage()
               << std::endl;
-
     exit(EXIT_FAILURE);
   }
 
   // Display help and terminate the program if the user asked for it.
   if (showHelp) {
     std::cout << cli_;
-
     exit(EXIT_SUCCESS);
   }
 }
 
-double Parser::b() const noexcept {
+double Parser::beta() const noexcept {
   return beta_;
 }
 
-double Parser::c() const noexcept {
+double Parser::gamma() const noexcept {
   return gamma_;
 }
 
-int Parser::s() const noexcept {
+int Parser::susceptible() const noexcept {
   return susceptible_;
 }
 
-int Parser::i() const noexcept {
+int Parser::infected() const noexcept {
   return infected_;
 }
 
-int Parser::r() const noexcept {
+int Parser::removed() const noexcept {
   return removed_;
 }
 

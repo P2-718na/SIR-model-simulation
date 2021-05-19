@@ -6,17 +6,16 @@
 namespace sir {
 
 class Parser {
+  // Lyra CLI object.
   lyra::cli cli_;
 
   // Model parameters.
-  double beta_;
-  double gamma_;
-  int susceptible_;
+  double beta_{};
+  double gamma_{};
+  int susceptible_{};
   int infected_{1};
   int removed_{0};
-
-  // Other parameters.
-  int dayCount_;
+  int dayCount_{};
 
   // Display type?
   bool prettyPrint_{false};
@@ -25,14 +24,14 @@ class Parser {
   bool noHeadings_{false};
 
  public:
-  Parser(int argc, char *argv[]);
+  Parser(int argc, char* argv[]);
 
   // Getter functions.
-  double b() const noexcept;
-  double c() const noexcept;
-  int s() const noexcept;
-  int i() const noexcept;
-  int r() const noexcept;
+  double beta() const noexcept;
+  double gamma() const noexcept;
+  int susceptible() const noexcept;
+  int infected() const noexcept;
+  int removed() const noexcept;
   int dayCount() const noexcept;
   bool prettyPrint() const noexcept;
   bool displayHeadings() const noexcept;
