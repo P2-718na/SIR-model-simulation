@@ -8,10 +8,12 @@ namespace sir {
 Model::Model(
   double beta, double gamma, int susceptible, int infected, int removed) {
   // Check values for beta and gamma parameters.
+  // this-> is required here
   if (!this->beta(beta)) {
     throw std::range_error("beta parameter out of range.");
   }
 
+  // this-> is required here
   if (!this->gamma(gamma)) {
     throw std::range_error("gamma parameter out of range.");
   }
@@ -36,7 +38,8 @@ Model::Model(
 
   // Check that there is at least one person in the simulation.
   // N can't be <0, since s_, i_ and r_ are all greater or equal to zero.
-  n_ = s_ + i_ + r_;
+  // this-> is required here.
+  n_ = this->susceptible() + this->infected() + this->removed();
   if (n_ == 0) {
     throw std::range_error("There must be at least one person.");
   }
@@ -101,7 +104,7 @@ void Model::step() noexcept {
   // Since s + i + r is constant, update R based on that. This also accounts
   // for floating point and rounding errors.
   // R cannot be negative, since susceptible and infected are rounded down.
-  r_ = n_ - this->susceptible() - this->infected();
+  r_ = n_ - susceptible() - infected();
 }
 
 }  // namespace sir

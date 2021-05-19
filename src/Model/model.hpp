@@ -8,32 +8,32 @@ class Model {
   // Must be a value in range [0, 1].
   // Must be initialized in constructor
   // Can be altered using beta(double newBeta) setter
-  double b_;
+  double b_{};
 
   // Gamma parameter for the simulation. Represents chance of healing.
   // Must be a value in range [0, 1].
   // Must be initialized in constructor
   // Can be altered using gamma(double newGamma) setter
-  double c_;
+  double c_{};
 
   // Represents people who might get infected.
   // Must be initialized in constructor, cannot be changed.
   // Must be a number greater than 0 and lesser than 500 million.
-  double s_;
+  double s_{};
 
   // Represents people who are infected and can infect others.
   // Must be initialized in constructor, cannot be changed.
   // Must be a number greater than 0 and lesser than 500 million.
-  double i_;
+  double i_{};
 
   // Represents dead, healed or quarantined people.
   // Must be initialized in constructor, cannot be changed.
   // Must be a number greater than 0 and lesser than 500 million.
-  double r_;
+  double r_{};
 
   // Total count (s_ + i_ + r_)
   // Computed at the beginning of the simulation.
-  int n_;
+  int n_{};
 
  public:
   // Constructors //////////////////////////////////////////////////////////////
