@@ -179,6 +179,6 @@ to run tests, see [Testing](#testing).
 ## Additional notes
 1. A requirement of the project was that there must be no memory leaks or
 illegal memory accesses. This program was run through Valgrind Memcheck
-and is completely clean.
+and is completely devoid of them.
 2. This code was run through Clang-Tidy to check for additional warnings.
 
