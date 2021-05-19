@@ -1,6 +1,6 @@
 ADD_EXECUTABLE(sir-test ./sir.test.cpp)
 
-set_target_properties(
+SET_TARGET_PROPERTIES(
         sir-test PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}"
 )

@@ -6,7 +6,7 @@ ADD_SUBDIRECTORY(Parser)
 
 TARGET_LINK_LIBRARIES(sir sir-model sir-visualizer parser)
 
-set_target_properties(
+SET_TARGET_PROPERTIES(
         sir PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}"
 )
