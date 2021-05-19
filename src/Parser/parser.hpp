@@ -24,9 +24,10 @@ class Parser {
   bool noHeadings_{false};
 
  public:
+  // Constructor ///////////////////////////////////////////////////////////////
   Parser(int argc, char* argv[]);
 
-  // Getter functions.
+  // Getters ///////////////////////////////////////////////////////////////////
   double beta() const noexcept;
   double gamma() const noexcept;
   int susceptible() const noexcept;
