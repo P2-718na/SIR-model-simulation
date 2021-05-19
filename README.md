@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="assets/unibo-logo.png">
-</p>
+<div align="center">
+  <img alt="Alma Mater Studiorum Logo" src="assets/unibo-logo.png">
+</div>
 
 # SIR-model-simulation
 This is a very basic implementation of the [SIR model for virus spreading][1].
@@ -109,9 +109,9 @@ If you have gnuplot installed, you can use it to display the data.
 ```
 The previous command will display the following graph:
 
-<p align="center">
-  <img src="assets/gnuplot.png">
-</p>
+<div align="center">
+  <img alt="" src="assets/gnuplot.png">
+</div>
 
 If you are running on WSL 1, you might get this error:
 ```shell
@@ -123,7 +123,7 @@ sudo strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.s
 ```
 
 ### Testing
-Make sure to [compile tests](#building), then run
+Make sure to compile tests (see [Building](#building)), then run
 ```shell
 ./sir-tests
 ```
@@ -138,9 +138,9 @@ Additional information is present in the comments alongside the code.
 Class that handles the calculations of the SIR model. The model used consists
 of three differential equations:
 
-<p align="center">
-  <img src="assets/equations.png">
-</p>
+<div align="center">
+  <img alt="SIR model equations" src="assets/equations.png">
+</div>
 
 Where `S`, `I` and `R` represent respectively the number of susceptible, infected and
 removed (dead/vaccinated/recovered) people. The equations are solved
@@ -171,7 +171,7 @@ constructor.
 ### Tests
 Unit Tests are performed using Doctest and are built separately from the main
 executable. Tests are centered on the Model component, and they check that all
-the constraints imposed by the model are met. For additional information on how  
+the constraints imposed by the model are met. For additional information on how
 to run tests, see [Testing](#testing).
 
 --------------------------------------------------------------------------------
@@ -180,3 +180,5 @@ to run tests, see [Testing](#testing).
 1. A requirement of the project was that there must be no memory leaks or
 illegal memory accesses. This program was run through Valgrind Memcheck
 and is completely clean.
+2. This code was run through Clang-Tidy to check for additional warnings.
+
