@@ -3,6 +3,7 @@
 #include "model.hpp"
 
 namespace sir {
+
 // Constructors ////////////////////////////////////////////////////////////////
 Model::Model(
   double beta, double gamma, int susceptible, int infected, int removed) {
@@ -16,6 +17,8 @@ Model::Model(
   }
 
   // Check values for s, i, r parameters.
+  // The upper limit of 5E6 is arbitrary. It was added to prevent overflow
+  // errors.
   if (susceptible < 0 || susceptible >= 5E6) {
     throw std::range_error("susceptible parameter out of range.");
   }
@@ -32,6 +35,7 @@ Model::Model(
   r_ = removed;
 
   // Check that there is at least one person in the simulation.
+  // N can't be <0, since s_, i_ and r_ are all greater or equal to zero.
   n_ = s_ + i_ + r_;
   if (n_ == 0) {
     throw std::range_error("There must be at least one person.");
@@ -99,4 +103,5 @@ void Model::step() noexcept {
   // R cannot be negative, since susceptible and infected are rounded down.
   r_ = n_ - this->susceptible() - this->infected();
 }
+
 }  // namespace sir
