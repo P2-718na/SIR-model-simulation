@@ -23,7 +23,7 @@ by [me (Matteo Bonacini)][3].
 - [gnuplot](http://www.gnuplot.info/) (optional)
 
 ## Building
-The preferred way to compile this code is by using CMake.
+The preferred way to build this code is by using CMake.
 ```shell
 mkdir build
 cd build
