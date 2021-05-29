@@ -181,4 +181,7 @@ to run tests, see [Testing](#testing).
 illegal memory accesses. This program was run through Valgrind Memcheck
 and is completely devoid of them.
 2. This code was run through Clang-Tidy to check for additional warnings.
+The configuration used was [CLion default][4] from JetBrains.
+
+[4]: https://confluence.jetbrains.com/display/CLION/Clang-Tidy+in+CLion%3A+default+configuration
 
