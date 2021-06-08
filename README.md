@@ -31,7 +31,7 @@ cmake ..
 ```
 Then, run either of these commands
 ```shell
-make sir  # compile the program only
+make sir      # compile the program only
 make tests    # compile tests only
 make          # compile both
 ```
