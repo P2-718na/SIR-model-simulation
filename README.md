@@ -31,9 +31,9 @@ cmake ..
 ```
 Then, run either of these commands
 ```shell
-make sir      # compile the program only
-make tests    # compile tests only
-make          # compile both
+make sir       # compile the program only
+make sir-test  # compile tests only
+make           # compile both
 ```
 Both executables will be generated inside the build folder.
 
